@@ -51,7 +51,7 @@ app.post("/link", async (req, res) =>{
 app.get("/:slug", async (req, res)=> {
     const {slug} = req.params;
 
-    const link = await Link.findOne({slug: slug});
+    const setLinks = await Link.findOne({slug: slug});
 
      await Link.updateOne({slug: slug}, {$set: {
         clicks: link.clicks + 1
@@ -67,9 +67,19 @@ app.get("/:slug", async (req, res)=> {
     res.redirect(link.url);
 })
 
+app.get("/api/links", async (req, res) => {
+   const links = await Link.find({});
+
+   return res.json({
+    success: true,
+    data:links,
+    message: "Links fetched successfully"
+   })
+})
+
 const PORT = process.env.PORT || 5000;
 
 app.listen(PORT,  () => {
     console.log(`Server is running on port ${PORT}`)
 
-});
+  });
