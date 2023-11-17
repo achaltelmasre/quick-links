@@ -3,7 +3,7 @@ import mongoose from 'mongoose';
 import dotenv from 'dotenv';
 dotenv.config();
 
-import Link from "./models/Link.js";
+import Link from "./models/Links.js";
 
 const app = express();
 app.use(express.json());
@@ -35,7 +35,7 @@ app.post("/link", async (req, res) =>{
           return res.json({
             success: true,
             data: {
-              shortLink: `${process.env.BASE_URL}/${savedLink.slug}`
+              shortUrl: `${process.env.BASE_URL}/${savedLink.slug}`
             },
             message: "Link saved successfully"
          })
