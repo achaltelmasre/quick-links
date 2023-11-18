@@ -48,23 +48,42 @@ app.post("/link", async (req, res) =>{
       }
 })
 
-app.get("/:slug", async (req, res)=> {
-    const {slug} = req.params;
+// app.get("/:slug", async (req, res) => {
+//     const {slug} = req.params;
 
-    const setLinks = await Link.findOne({slug: slug});
+//     const link = await Link.findOne({slug: slug});
 
-     await Link.updateOne({slug: slug}, {$set: {
-        clicks: link.clicks + 1
-     }})
+//      await Link.updateOne({slug: slug}, {$set: {
+//         clicks: link.clicks + 1
+//      }})
 
-      if (!link) {
-        return res.json({
-            success: false,
-            message: "Link not found"
-        })
-      }
+//       if (!link) {
+//         return res.json({
+//             success: false,
+//             message: "Link not found"
+//         })
+//       }
 
-    res.redirect(link.url);
+//     res.redirect(link.url);
+// })
+
+app.get("/:slug", async (req, res)=>{
+  const {slug} = req.params;
+
+  const link = await Link.findOne({slug: slug});
+
+  if(!link){
+    return res.json({
+      success: false,
+      message: "Link not found"
+    })
+  }
+
+  await Link.updateOne({slug: slug}, {$set: {
+    clicks: link.clicks + 1
+  }})
+
+  res.redirect(link.url);
 })
 
 app.get("/api/links", async (req, res) => {

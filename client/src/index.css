@@ -1,0 +1,10 @@
+*{
+    padding: none;
+    margin: none;
+}
+body{
+    background-image:url(./../src/bg.jpg);
+    height: 100%;
+    background-repeat: no-repeat;
+    background-size: cover;
+}

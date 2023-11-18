@@ -1,47 +1,60 @@
-body{
-    background-color: rgb(210, 242, 242);
-}
+
 .app-title{
     text-align: center;
+    color: white;
 }
-.app-container{
+/* .app-container{
     display: flex;
-    justify-content:space-around;
+    
     flex-wrap: wrap;
+} */
+.link-generator{
+    color: white;
+    text-align: center;
 }
 .link-generater-card {
-    background-color: white;
+   
     border-radius: 5px;
     padding: 20px;
-    box-shadow: 0 0 10px black;
+    box-shadow: 0 0 10px rgb(210, 182, 182);
     height: 300px;
+    width: 650px;
+    margin: 0 auto;
+    padding: 10px 60px;
+    
 }
 .user-input{
     width: 250px;
     margin-bottom:10px ;
     font-size: 20px;
     padding: 5px 10px;
-    display: block;
+    margin: 15px;
     outline: none;
+    background:none;
+    color: white;
+   
 
 }
 .btn-generate-link{
     display: block;
-    background-color: black;
+    background-color: green;
     color: white;
-    padding: 10px 30px;
+    padding: 12px 30px;
     border-radius: 15px;
     border:none;
     margin: 15px auto;
-    font-size: 15px;
+    font-size: 17px;
     cursor: pointer;
 
 }
 .input-short-url{
-    width: 230px;
+    width: 500px;
     margin-bottom:10px ;
     font-size: 20px;
-    padding: 5px 10px;
+    padding: 10px 10px;
+    background:none;
+    margin-top: 10px;
+    color: green;
 
 }
 .short-url-container{
@@ -53,14 +66,17 @@ body{
     cursor: pointer;
 }
 .link-card{
-    background-color: #fff;
+    color: white;
     padding: 5px 10px;
-    margin: 10px;
+    margin: 0 auto;
     border-radius:10px;
-    box-shadow: 0 0 10px black ;
+    width: 1000px;
+    box-shadow: 0 0 10px rgb(244, 196, 196) ;
+    font-size: 20px;
+    margin-top: 10px;
 }
 .all-links-container{
-    height: 80vh;
+    height: 60vh;
     overflow-y: scroll;
     -ms-overflow-style: none;
     scrollbar-width:1px ;

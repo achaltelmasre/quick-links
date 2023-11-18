@@ -3,23 +3,49 @@ import "./App.css";
 import copyimg from "./icon-copy.png";
 import axios from 'axios'
 
+
 function App() {
   const [url, seturl] = useState("");
   const [slug, setSlug] = useState("");
   const [shortUrl, setShortUrl] = useState("");
   const [links, setLinks] = useState([]);
 
+  // const  generateLink = async () => {
+  //     const response = await axios.post('/link', {
+  //       url,
+  //       slug
+  //     })
+  //      setShortUrl(response?.data?.data?.shortUrl)
+  // }
+  
+
+  // const copyShortUrl = () => {
+  //   navigator.clipboard.writeText(shortUrl)
+  //   alert("Copied to Clipboard")
+  // }
+
+  // const loadLinks = async () => {
+  //   const response = await axios.get('/api/links');
+
+  //   setLinks(response?.data?.data)
+  // }
+
+  // useEffect(() => {
+  //   loadLinks();
+  // }, [])
+
   const  generateLink = async () => {
-      const response = await axios.post('./link', {
-        url,
-        slug
-      })
-       setShortUrl(response?.data?.data?.shortUrl)
+    const response = await axios.post('/link', {
+      url,
+      slug
+    })
+
+    setShortUrl(response?.data?.data?.shortUrl)
   }
 
   const copyShortUrl = () => {
-    navigator.clipboard.writeText(shortUrl)
-    alert("Copied to Clipboard")
+    navigator.clipboard.writeText(shortUrl);
+    alert('Copied to clipboard!')
   }
 
   const loadLinks = async () => {
@@ -28,19 +54,19 @@ function App() {
     setLinks(response?.data?.data)
   }
 
-  useEffect(() => {
+  useEffect(()=>{
     loadLinks();
   }, [])
 
   return (
     
     <div>
-      
+
       <h1 className="app-title">🔗 Quick Links</h1>
 
       <div className="app-container">
         <div className="link-generater-card">
-          <h2> Link Generation </h2>
+          <h2 className="link-generator"> Link Generation </h2>
           
           <input
             type="text"
@@ -83,8 +109,9 @@ function App() {
           </button>
         </div>
 
+        <h2 className="app-title">All Links</h2>
         <div className="all-links-container">
-          <h2>All Links</h2>
+        
           {
             links?.map((linkObj, index) => {
               const {url, slug, clicks} = linkObj;
