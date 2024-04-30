@@ -1,38 +1,13 @@
 import React, { useEffect, useState } from "react";
 import "./App.css";
 import copyimg from "./icon-copy.png";
-import axios from 'axios'
-
+import axios from 'axios';
 
 function App() {
   const [url, seturl] = useState("");
   const [slug, setSlug] = useState("");
   const [shortUrl, setShortUrl] = useState("");
   const [links, setLinks] = useState([]);
-
-  // const  generateLink = async () => {
-  //     const response = await axios.post('/link', {
-  //       url,
-  //       slug
-  //     })
-  //      setShortUrl(response?.data?.data?.shortUrl)
-  // }
-  
-
-  // const copyShortUrl = () => {
-  //   navigator.clipboard.writeText(shortUrl)
-  //   alert("Copied to Clipboard")
-  // }
-
-  // const loadLinks = async () => {
-  //   const response = await axios.get('/api/links');
-
-  //   setLinks(response?.data?.data)
-  // }
-
-  // useEffect(() => {
-  //   loadLinks();
-  // }, [])
 
   const  generateLink = async () => {
     const response = await axios.post('/link', {
@@ -57,6 +32,7 @@ function App() {
   useEffect(()=>{
     loadLinks();
   }, [])
+
 
   return (
     
@@ -119,8 +95,9 @@ function App() {
               return (
                 <div className="link-card" key={index}>
                   <p>URL : {url}</p>
-                  <p>Short URL:{process.env.REACT_APP_BASE_URL} {slug}</p>
+                  <p>Short URL:{process.env.REACT_APP_BASE_URL}{slug}</p>
                   <p>Clicks: {clicks}</p>
+                 
                 </div>
               )
             })

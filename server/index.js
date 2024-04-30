@@ -8,6 +8,7 @@ import Link from "./models/Links.js";
 
 const app = express();
 app.use(express.json());
+
 const __dirname = path.resolve();
 
 const connectDB = async () => {
